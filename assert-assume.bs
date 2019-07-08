@@ -1,0 +1,76 @@
+<pre class='metadata'>
+Title: Assert Assume
+Status: D
+Audience: EWG, CWG
+Editor: Gašper Ažman <gasper.azman@gmail.com>
+Editor: Timur Doumler <cpp@timur.audio>
+Shortname: PXXXX
+Abstract: The minimal change for `__builtin_assume`
+Group: WG21
+Date: 2019-07-08
+Markup Shorthands: markdown yes
+Revision: 0
+ED: https://github.com/atomgalaxy/isocpp-assert-assume
+</pre>
+
+<style>
+.ins, ins, ins *, span.ins, span.ins * {
+  background-color: rgb(200, 250, 200);
+  color: rgb(0, 136, 0);
+  text-decoration: none;
+}
+
+.del, del, del *, span.del, span.del * {
+  background-color: rgb(250, 200, 200);
+  color: rgb(255, 0, 0);
+  text-decoration: line-through;
+  text-decoration-color: rgb(255, 0, 0);
+}
+</style>
+
+Revision History {#history}
+================
+- R0: initial version
+
+
+Status of this paper {#status}
+====================
+
+Late Paper for Cologne
+
+
+Motivation {#motivation}
+==========
+
+Make the contracts facility the promised useful spelling of `__builtin_assume()`.
+
+It is not meant to be general - instead, it is meant to be generalizable later.
+
+
+Proposal
+========
+
+We want to allow the `assume` semantic to be spelled explicitly in `assert` contract specifications.
+
+Example:
+
+```
+int divide_by_32(int x) {
+    [[assert assume: x >= 0]]
+    return x/32; // single instruction right-shift
+}
+```
+
+We are not proposing the `assume` semantic be able to be spelled in interface contracts because of reasonable fears that it will lead to time-traveling optimizations.
+
+
+Proposed Wording:
+=================
+
+
+TBD
+
+
+<!--
+ vim: ft=markdown wrap linebreak nolist textwidth=0 wrapmargin=0
+-->
